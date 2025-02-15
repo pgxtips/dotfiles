@@ -111,6 +111,4 @@ tmux-sessionizer() {
 zle -N tmux-sessionizer
 bindkey '^f' tmux-sessionizer
 
-
-
 [ -f "/home/brandon/.ghcup/env" ] && . "/home/brandon/.ghcup/env" # ghcup-env
