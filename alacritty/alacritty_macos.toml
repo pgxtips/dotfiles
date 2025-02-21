@@ -1,0 +1,6 @@
+[window] 
+decorations="None" 
+opacity = 0.93
+[font]
+normal = { family = "0xProto Nerd Font", style = "Regular" }
+size=26

@@ -14,10 +14,17 @@ echo "linking scripts"
 ln -s $HOME/dotfiles/scripts $HOME/.config/scripts
 
 echo "linking alacritty"
-ln -s $HOME/dotfiles/alacritty $HOME/.config/alacritty
+# ensure the target directory exists
+mkdir -p "$HOME/.config/alacritty"
+if [[ "$(uname)" == "Linux" ]]; then
+    ln -s "$HOME/dotfiles/alacritty/alacritty_linux.toml" "$HOME/.config/alacritty/alacritty.toml"
+elif [[ "$(uname)" == "Darwin" ]]; then
+    ln -s "$HOME/dotfiles/alacritty/alacritty_macos.toml" "$HOME/.config/alacritty/alacritty.toml"
+else
+    echo "Unsupported OS"
+fi
 
 echo "linking nvim"
 ln -s $HOME/dotfiles/nvim $HOME/.config/nvim
 
 echo "Finished creating symlinks for dotfiles."
-
