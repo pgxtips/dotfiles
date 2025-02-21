@@ -13,12 +13,12 @@ function AlacrittyConfig() {
 }
 
 echo "removing links"
-rm -f $HOME/.zshrc
-rm -f $HOME/.config/i3
-rm -f $HOME/.config/tmux
-rm -f $HOME/.config/scripts
-rm -f $HOME/.config/alacritty/alacritty.toml
-rm -f $HOME/.config/nvim
+rm -rf $HOME/.zshrc
+rm -rf $HOME/.config/i3
+rm -rf $HOME/.config/tmux
+rm -rf $HOME/.config/scripts
+rm -rf $HOME/.config/alacritty/alacritty.toml
+rm -rf $HOME/.config/nvim
 echo "done!"
 
 echo "creating neccessary dirs"
