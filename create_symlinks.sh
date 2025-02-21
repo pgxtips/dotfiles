@@ -1,30 +1,35 @@
 # !/bin/bash 
-echo "Creating symlinks for dotfiles..."
 
-echo "linking .zshrc"
-ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
 
-echo "linking i3"
-ln -s $HOME/dotfiles/i3 $HOME/.config/i3
+# -----------------------
+#        Functions
+# -----------------------
+function AlacrittyConfig() {
+    if [[ "$(uname)" == "Linux" ]]; then
+        echo "alacritty_linux.toml"
+    elif [[ "$(uname)" == "Darwin" ]]; then
+        echo "alacritty_macos.toml"
+    fi
+}
 
-echo "linking tmux"
-ln -s $HOME/dotfiles/tmux $HOME/.config/tmux
+echo "removing links"
+rm -f $HOME/.zshrc
+rm -f $HOME/.config/i3
+rm -f $HOME/.config/tmux
+rm -f $HOME/.config/scripts
+rm -f $HOME/.config/alacritty/alacritty.toml
+rm -f $HOME/.config/nvim
+echo "done!"
 
-echo "linking scripts"
-ln -s $HOME/dotfiles/scripts $HOME/.config/scripts
-
-echo "linking alacritty"
-# ensure the target directory exists
+echo "creating neccessary dirs"
 mkdir -p "$HOME/.config/alacritty"
-if [[ "$(uname)" == "Linux" ]]; then
-    ln -s "$HOME/dotfiles/alacritty/alacritty_linux.toml" "$HOME/.config/alacritty/alacritty.toml"
-elif [[ "$(uname)" == "Darwin" ]]; then
-    ln -s "$HOME/dotfiles/alacritty/alacritty_macos.toml" "$HOME/.config/alacritty/alacritty.toml"
-else
-    echo "Unsupported OS"
-fi
+echo "done!"
 
-echo "linking nvim"
+echo "creating symlinks"
+ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
+ln -s $HOME/dotfiles/i3 $HOME/.config/i3
+ln -s $HOME/dotfiles/tmux $HOME/.config/tmux
+ln -s $HOME/dotfiles/scripts $HOME/.config/scripts
+ln -s $HOME/dotfiles/alacritty/$(AlacrittyConfig) $HOME/.config/alacritty/alacritty.toml
 ln -s $HOME/dotfiles/nvim $HOME/.config/nvim
-
-echo "Finished creating symlinks for dotfiles."
+echo "done!"
