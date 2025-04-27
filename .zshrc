@@ -101,11 +101,11 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # === Enable Vi mode for shell editing ===
-bindkey -v
+# bindkey -v
 
 # Remap j and k to do nothing in Vi mode
-bindkey -M vicmd -r "j"
-bindkey -M vicmd -r "k"
+# bindkey -M vicmd -r "j"
+# bindkey -M vicmd -r "k"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -119,8 +119,6 @@ zle -N tmux-sessionizer
 bindkey '^f' tmux-sessionizer
 
 [ -f "/home/brandon/.ghcup/env" ] && . "/home/brandon/.ghcup/env" # ghcup-env
-
-. "$HOME/.local/bin/env"
 
 alias reload='source ~/.zshrc && echo "zsh reloaded!"'
 
